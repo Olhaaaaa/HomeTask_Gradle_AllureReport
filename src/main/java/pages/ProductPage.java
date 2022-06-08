@@ -11,17 +11,17 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//li[contains(@class,'buttons__item ng')]")
     private WebElement addToCartButton;
 
+//    @FindBy(xpath = "//rz-cart//button[@opencart]")
+//    private WebElement cartButton;
+
+//    @FindBy(xpath = "//div[@class='modal__content']")
+//    private WebElement popUpContent;
+
     @FindBy(xpath = "//rz-cart//button[@opencart]")
-    private WebElement cartButton;
-
-    @FindBy(xpath = "//div[@class='modal__content']")
-    private WebElement popUpContent;
-
-    @FindBy(xpath = "//button[@class='modal__close']")
     private WebElement popUp;
 
-    @FindBy(xpath = "//button[@class='modal__close']")
-    private WebElement popUpClose;
+//    @FindBy(xpath = "//button[@class='modal__close']")
+//    private WebElement popUpClose;
 
     @FindBy(xpath = "//li[contains(@class,'buttons__item ng')]")
     private WebElement totalPrice;
