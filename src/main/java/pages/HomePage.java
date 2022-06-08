@@ -6,8 +6,6 @@ import util.DriverFactoryMultiton;
 
 
 public class HomePage extends BasePage {
-//    @FindBy(xpath = "//input[contains(@class,'search-form')]")
-//    private WebElement searchInputVisibility;
 
     @FindBy(xpath = "//input[contains(@class,'search-form')]")
     private WebElement searchInput;
