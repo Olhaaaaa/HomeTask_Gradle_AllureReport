@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="AddToCartTestSuite" parallel="tests" thread-count="3" verbose="2">
+        <listeners>
+            <listener class-name="util.CustomTestListener"/>
+        </listeners>
+    <test name="tests.AddToCartTest1">
+        <parameter name="search" value="Велосипеди "/>
+        <parameter name="brand" value="Avanti"/>
+        <parameter name="price" value="100000"/>
+           <classes>
+               <class name="tests.AddToCartTest"/>
+        </classes>
+    </test>
+    <test name="tests.AddToCartTest2">
+        <parameter name="search" value="Телефон"/>
+        <parameter name="brand" value="Samsung"/>
+        <parameter name="price" value="200000"/>
+        <classes>
+            <class name="tests.AddToCartTest"/>
+        </classes>
+    </test>
+    <test name="tests.AddToCartTest3">
+        <parameter name="search" value="Чай"/>
+        <parameter name="brand" value="Greenfield"/>
+        <parameter name="price" value="300"/>
+        <classes>
+            <class name="tests.AddToCartTest"/>
+        </classes>
+    </test>
+    <test name="tests.AddToCartTest4">
+        <parameter name="search" value="Планшет"/>
+        <parameter name="brand" value="Lenovo"/>
+        <parameter name="price" value="10000"/>
+    <classes>
+        <class name="tests.AddToCartTest"/>
+    </classes>
+</test>
+    <test name="tests.AddToCartTest5">
+        <parameter name="search" value="Ноутбук"/>
+        <parameter name="brand" value="HP"/>
+        <parameter name="price" value="500000"/>
+        <classes>
+            <class name="tests.AddToCartTest"/>
+        </classes>
+    </test>
+</suite>
