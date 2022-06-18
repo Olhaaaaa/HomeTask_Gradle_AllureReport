@@ -2,9 +2,11 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import org.testng.log4testng.Logger;
 import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
@@ -14,12 +16,14 @@ import java.time.Duration;
 
 @Listeners
 public class AddToCartTest extends BaseTest {
-
+    private static final Logger log = Logger.getLogger(AddToCartTest.class);
     WebDriver driver = DriverFactoryMultiton.getInstance().getDriver();
 
     @Parameters({"search", "brand", "price"})
     @Test(suiteName = "AddToCartTestSuite")
     public void checkTotalPriceInCart(String searchKeyword, String brandKeyword, String totalPrice) throws InterruptedException {
+        log.debug("Test successfully started");
+        Reporter.log("Test successfully started");
         HomePage homePage = new HomePage();
         homePage.waitVisibilityOfElement(Duration.ofSeconds(30), homePage.getSearchByKeyword());
         homePage.searchByKeyword(searchKeyword);

@@ -24,16 +24,26 @@ dependencies {
     testImplementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.36'
     implementation group: 'org.apache.poi', name: 'poi', version: '5.2.2'
     implementation group: 'org.apache.poi', name: 'poi-ooxml', version: '5.2.2'
-
-//    compileOnly 'org.projectlombok:lombok'
-//    annotationProcessor 'org.projectlombok:lombok'
-
+    implementation 'com.google.guava:guava:31.1-jre'
+    compile group: 'com.relevantcodes', name: 'extentreports', version: '2.41.2'
+    testCompile group: 'org.uncommons', name: 'reportng', version: '1.1.4'
+    compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
+    compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
+    compile group: 'io.appium', name: 'java-client', version: '7.1.0'
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
 }
 
 test {
     useTestNG(){
         suites 'testng.xml'
+        options{
+            listeners << 'org.uncommons.reportng.HTMLReporter'
+            listeners << 'org.uncommons.reportng.JUnitXMLReporter'
+        }
+        useDefaultListeners=false
     }
+    reports.html.setDestination(file("$projectDir/GradleReport"))
 }
 
 task bird{
