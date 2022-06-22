@@ -1,6 +1,7 @@
 package util;
 
 import io.qameta.allure.Attachment;
+import logging.Log;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -39,32 +40,32 @@ public class AllureListener implements ITestListener, ISuiteListener, IInvokedMe
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        logger.info("onStart method: " + iTestContext.getName());
+        Log.log("onStart method: " + iTestContext.getName());
         iTestContext.setAttribute("WebDriver", DriverFactoryMultiton.getInstance().getDriver());
     }
 
     @Override
     public void onFinish(ITestContext iTestContext) {
-        logger.info("onFinish method " + iTestContext.getName());
+        Log.log("onFinish method " + iTestContext.getName());
     }
 
     @Override
     public void onTestStart(ITestResult result) {
-        logger.info("Start test: " + getTestMethodName(result) + " start");
+        Log.log("Start test: " + getTestMethodName(result) + " start");
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        logger.info("onTestSuccess method.");
+        Log.log("onTestSuccess method.");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        logger.info("onTestFailure method: " + getTestMethodName(result) + " failed");
+        Log.log("onTestFailure method: " + getTestMethodName(result) + " failed");
         Object testClass = result.getInstance();
         WebDriver driver = DriverFactoryMultiton.getInstance().getDriver();
         if (driver instanceof WebDriver) {
-            logger.info("Screenshot captured for test case: " + getTestMethodName(result));
+            Log.log("Screenshot captured for test case: " + getTestMethodName(result));
             saveScreenshotPNG(driver);
         }
         saveTextLog(getTestMethodName(result) + " failed and screenshot taken!");
@@ -72,11 +73,11 @@ public class AllureListener implements ITestListener, ISuiteListener, IInvokedMe
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        logger.info("onTestSkipped method: " + getTestMethodName(result) + " skipped");
+        Log.log("onTestSkipped method: " + getTestMethodName(result) + " skipped");
     }
 
     @Override
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        logger.info("Test failed but it is in defined success ratio: " + getTestMethodName(result));
+        Log.log("Test failed but it is in defined success ratio: " + getTestMethodName(result));
     }
 }

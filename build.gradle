@@ -84,6 +84,9 @@ test {
     useTestNG() {
         suites 'testng.xml'
         options.useDefaultListeners true
+        testLogging {
+            events = ['PASSED', 'FAILED', 'SKIPPED']
+        }
     }
 }
 
