@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="FailedTestsSuite" parallel="false">
+    <listeners>
+        <listener class-name="util.AllureListener"/>
+    </listeners>
+    <test name="simpleFailedTest">
+        <classes>
+            <class name="tests.AddToCartTest">
+                <methods>
+                    <include name="simpleFailedTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

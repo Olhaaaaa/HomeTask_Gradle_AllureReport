@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -10,17 +11,22 @@ import org.testng.log4testng.Logger;
 import pages.HomePage;
 import pages.ProductPage;
 import pages.SearchResultsPage;
+import util.AllureListener;
 import util.DriverFactoryMultiton;
 
 import java.time.Duration;
-
-@Listeners
+@Listeners({AllureListener.class})
+@Epic("Regression Tests")
+@Feature("Add to cart Test")
 public class AddToCartTest extends BaseTest {
     private static final Logger log = Logger.getLogger(AddToCartTest.class);
     WebDriver driver = DriverFactoryMultiton.getInstance().getDriver();
 
-    @Parameters({"search", "brand", "price"})
+
     @Test(suiteName = "AddToCartTestSuite")
+    @Parameters({"search", "brand", "price"})
+    @Description("Method Description: Check total price in cart")
+    @Severity(value = SeverityLevel.CRITICAL)
     public void checkTotalPriceInCart(String searchKeyword, String brandKeyword, String totalPrice) throws InterruptedException {
         log.debug("Test successfully started");
         Reporter.log("Test successfully started");
@@ -42,5 +48,10 @@ public class AddToCartTest extends BaseTest {
         productPage.checkPopUp();
         productPage.waitForPageLoadComplete(Duration.ofSeconds(30));
         Assert.assertFalse(productPage.getTotalPriceText(), totalPrice);
+    }
+
+    @Test(suiteName = "FailedTestsSuite")
+    public void simpleFailedTest(){
+        Assert.fail();
     }
 }
